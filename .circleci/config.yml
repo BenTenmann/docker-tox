@@ -68,8 +68,8 @@ workflows:
             tags:
               only: /.*/
             branches:
-              ignore: "main"
+              ignore: "master"
       - generate-version:
           filters:
             branches:
-              only: "main"
+              only: "master"
