@@ -10,7 +10,14 @@ RUN apt update && \
     apt install -y build-essential
 
 RUN apt update && \
-    apt install -y python2.7-dev python3.{5..11}-dev pypy-dev pypy3-dev
+    apt install -y \
+    python2.7-dev python3.{5..11}-dev \
+    pypy-dev pypy3-dev \
+    python3.{5..11}-venv
+
+RUN apt update && \
+    apt install -y python3-pip && \
+    pip install 'tox>=4.0.0a2'
 
 ONBUILD COPY install-prereqs*.sh requirements*.txt tox.ini /app/
 ONBUILD ARG SKIP_TOX=false
